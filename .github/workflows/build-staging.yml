@@ -61,13 +61,4 @@ jobs:
           cluster-name: contoso-video
 
       - name: Run Helm Deploy
-        run: helm upgrade \
-                contoso-website \
-                ./kubernetes/contoso-website \
-                --install \
-                --create-namespace \
-                --atomic \
-                --wait \
-                --namespace staging \
-                --set image.repository=${{ secrets.ACR_NAME }} \
-                --set dns.name=${{ secrets.DNS_NAME }}
+        run: helm upgrade contoso-website ./kubernetes/contoso-website --install --create-namespace --atomic --wait --namespace staging --set image.repository=${{ secrets.ACR_NAME }} --set dns.name=${{ secrets.DNS_NAME }}
