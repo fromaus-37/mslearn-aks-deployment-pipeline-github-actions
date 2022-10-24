@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: contoso-website
-  namespace: { { default "staging" .Release.Namespace } }
+  namespace: {{ default "staging" .Release.Namespace }}
 spec:
   selector:
     matchLabels:
