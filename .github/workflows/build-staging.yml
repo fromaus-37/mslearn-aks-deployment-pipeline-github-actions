@@ -6,7 +6,7 @@ name: Build and push the latest build to staging
 # events but only for the main branch
 on:
   push:
-    branches: [ main ]
+    branches: [main]
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -61,4 +61,4 @@ jobs:
           cluster-name: contoso-video
 
       - name: Run Helm Deploy
-        run: helm upgrade contoso-website ./kubernetes/contoso-website --install --create-namespace --atomic --wait --namespace staging --set image.repository=${{ secrets.ACR_NAME }} --set dns.name=${{ secrets.DNS_NAME }}
+        run: helm upgrade contoso-website ./kubernetes/contoso-website --install --create-namespace --atomic --wait --namespace staging --set image.repository=${{ secrets.ACR_NAME }} --set dns.name=${{ secrets.DNS_NAME }} --timeout 10m0s
